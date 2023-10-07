@@ -1,0 +1,42 @@
+<div class="container cart my-5 bg-main-light p-5" >
+    <div class="cart-head d-flex justify-content-between " >
+        <div>
+            <h2 class="mb-3">Cart Shop</h2>
+            <h5 class="py-4">total Price: <span class="text-main">{{cartProudcts.data.totalCartPrice}}</span></h5>
+        </div>
+        <div>
+            <button class="btn btn-primary mb-3 ms-auto d-block px-3 py-2">
+                <a routerLink="/checkout" class="text-white fs-5">
+                    Check out
+                </a>
+            </button>
+            <h5>total number of items: <span class="text-main">{{cartProudcts.data.products.length}}</span></h5>
+        </div>
+    </div>
+    <div class="cart-item px-4" *ngIf="cartProudcts.status == 'success'">
+        <div class="row border-bottom mb-4" *ngFor="let cart of cartProudcts.data.products " >
+            <div class="col-md-2" >
+                <div class="img">
+                    <img [src]="cart.product.imageCover" class="w-100" alt="">
+                </div>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center flex-column">
+                <h5>{{cart.product.title}}</h5>
+                <h6>{{cart.price}} EGP </h6>
+                <button type="button" class="btn text-danger align-self-start " (click)="removeProduct(cart.product.id)">
+                    <i class="fa-solid fa-trash"></i>
+                    Remove
+                </button>
+                
+            </div>
+            <div class="col-md-2   d-flex justify-content-center align-items-center">
+                <button class="btn btn-outline-success me-3 count-btns" (click)="updateCount(cart.product.id,cart.count+1)">+</button>
+                <span>{{cart.count}}</span>
+                <button class="btn btn-outline-success ms-3 count-btns" (click)="updateCount(cart.product.id,cart.count-1)">-</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-outline-success btn-border d-block m-auto px-3 py-2 fs-5" (click)="clear()">Clear Your Cart</button>
+</div>
+

@@ -1,0 +1,32 @@
+<div class="container cart my-5 bg-main-light p-5" >
+    <div class="cart-head  " >
+        <div>
+            <h2 class="mb-3">My Wish List</h2>
+        </div>
+    </div>
+    <div class="cart-item px-4" *ngIf="true">
+        <div class="row border-bottom mb-4 align-items-center" *ngFor="let wishItem of wishList">
+            <div class="col-md-2" >
+                <div class="img">
+                    <img [src]="wishItem.imageCover" class="w-100" alt="">
+                </div>
+            </div>
+            <div class="col-md-8 d-flex justify-content-center flex-column">
+                <h5>{{wishItem.title}}</h5>
+                <h6 class="price">{{wishItem.price}} EGP </h6>
+                <button type="button" class="btn btn-sm text-danger align-self-start btnrmv" (click)="removeFromWishList(wishItem.id)" >
+                    <i class="fa-solid fa-trash"></i>
+                    Remove
+                </button>
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-border ms-auto addbtn" (click)="addToCart(wishItem.id)">add to Cart</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<ng-template #msg>
+    <h2 class="text-center">Your Cart Is Empty</h2>
+</ng-template>

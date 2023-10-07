@@ -1,0 +1,30 @@
+<div class="w-75 mx-auto">
+    <form [formGroup]="shippingDetails" (ngSubmit)="handleOnline()">
+
+        <label for="details">Details</label>
+        <input type="text" class="form-control mb-3" formControlName="details" id="details">
+
+        <div class="alert alert-danger" *ngIf="shippingDetails.get('details')?.errors && shippingDetails.get('details')?.touched" >
+            <p *ngIf="shippingDetails.get('details')?.getError('required')">Details is required</p>
+            <p *ngIf="shippingDetails.get('details')?.getError('minlength')">Details min length is 3</p>
+        </div>
+
+        <label for="phone">phone</label>
+        <input type="tel" class="form-control mb-3" formControlName="phone" id="phone">
+
+        <div class="alert alert-danger" *ngIf="shippingDetails.get('phone')?.errors && shippingDetails.get('phone')?.touched" >
+            <p *ngIf="shippingDetails.get('phone')?.getError('required')">phone is required</p>
+            <p *ngIf="shippingDetails.get('phone')?.getError('minlength')">phone min length is 10</p>
+            <p *ngIf="shippingDetails.get('phone')?.getError('maxlength')">phone Max length is 13</p>
+        </div>
+
+        <label for="city">city</label>
+        <input type="text" class="form-control mb-3" formControlName="city" id="city">
+
+        <div class="alert alert-danger" *ngIf="shippingDetails.get('city')?.errors && shippingDetails.get('city')?.touched" >
+            <p *ngIf="shippingDetails.get('city')?.getError('required')">city is required</p>
+        </div>
+
+        <button class="btn btn-outline-info w-100 mt-4" [class.disabled]="!shippingDetails.valid">Pay</button>
+    </form>
+</div>

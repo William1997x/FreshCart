@@ -1,0 +1,11 @@
+
+    
+        
+  <div class="container">
+    <input type="text" class="form-control w-75 mx-auto my-5" placeholder="search...." [(ngModel)]="searchKey" >
+    <div class="row">
+        <div class="col-md-6 col-lg-3" *ngFor="let product of allProducts | search :searchKey">
+            <app-product-item [product]="product" [wishArr]="wishListarr"></app-product-item>
+        </div>
+    </div>
+  </div>

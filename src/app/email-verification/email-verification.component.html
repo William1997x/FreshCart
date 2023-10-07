@@ -1,0 +1,48 @@
+<section *ngIf="step1" class="w-75 mx-auto rounded p-3">
+    <h2>Please Enter Your Email: </h2>
+    <form [formGroup]="forgotPassword" (ngSubmit)="forgotPasswordM()">
+        <div class="form-floating mb-3">
+            <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email</label>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="(forgotPassword.get('email')?.errors && forgotPassword.get('email')?.touched)">
+            <p *ngIf="forgotPassword.get('email')?.getError('required')">Email is Required</p>
+            <p *ngIf="forgotPassword.get('email')?.getError('email')">Email is Invalid</p>
+        </div>
+
+        <button class="btn btn-outline-success">Forgot Password</button>
+        <p *ngIf="userMsg" class="alert alert-danger w-75 mx-auto p-1 mb-0 mt-2 text-center">{{userMsg}}</p>
+    </form>
+</section>
+
+
+<section *ngIf="step2" class="w-75 mx-auto rounded p-3">
+    <h2>Verification code:</h2>
+    <form [formGroup]="resetCode" (ngSubmit)="resetCodeM()">
+        <div class="form-floating mb-3">
+            <input formControlName="resetCode" type="text" class="form-control" id="resetCode" placeholder="name@example.com">
+            <label for="resetCode">Code</label>
+        </div>
+        <button class="btn btn-outline-success">Reset Code</button>
+        <p *ngIf="userMsg" class="alert alert-danger w-75 mx-auto p-1 mb-0 mt-2 text-center">{{userMsg}}</p>
+    </form>
+</section>
+
+<section *ngIf="step3" class="w-75 mx-auto rounded p-3">
+    <h2>reset your account password: </h2>
+    <form [formGroup]="resetPassword" (ngSubmit)="resetPasswordM()">
+        <div class="form-floating mb-3">
+            <input formControlName="newPassword" type="password" class="form-control" id="resetPass" placeholder="Password">
+            <label for="resetPass">Password</label>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="(resetPassword.get('newPassword')?.errors && resetPassword.get('newPassword')?.touched) ">
+            <p *ngIf="resetPassword.get('newPassword')?.getError('required')">Password is Required</p>
+            <p *ngIf="resetPassword.get('newPassword')?.getError('pattern')">Password is Invalid</p>
+        </div>
+
+        <button class="btn btn-outline-success">Reset Password</button>
+        <p *ngIf="userMsg" class="alert alert-danger w-75 mx-auto p-1 mb-0 mt-2 text-center">{{userMsg}}</p>
+    </form>
+</section>

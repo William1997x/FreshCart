@@ -1,0 +1,28 @@
+.nav-item a {
+    color: #000000a6;
+}
+.nav-item a:hover{
+    color:#000000cc;
+}
+.actv {
+    color:#000 !important;
+}
+.nav-item a i{
+    font-size: 28px;
+    color:#000000cc;
+}
+.navbar-brand span{
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 33.6px;
+    margin-bottom: 8px;
+}
+
+.navbar-brand i {
+    color:#4FA74F;
+}
+
+@media screen AND (max-width: 992px) {
+    
+}
+

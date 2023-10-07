@@ -1,0 +1,13 @@
+
+
+img {
+    height:300px;
+    object-position: center;
+    object-fit: cover;
+}
+.brand-item span{
+    color:#198754;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}

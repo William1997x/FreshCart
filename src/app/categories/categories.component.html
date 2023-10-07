@@ -1,0 +1,18 @@
+
+<div class="container">
+    <div class="row g-3">
+        <div class="col-md-4" *ngFor="let category of allCategoreis">
+            <app-category-item [category]="category" (id)="getSubCategories($event)" (categoryName)="setCategoryName($event)"></app-category-item>
+        </div>
+    </div>
+    <div *ngIf="subCategories.getValue().length>0" class="my-5">
+        <h3 class="text-center text-main mb-3">{{categoryName.value}} subcategories</h3>
+        <div class="row g-3">
+            <div class="col-md-4 " *ngFor="let sub of subCategories.getValue()">
+                <div class="item-border  text-center  product">
+                    <p class="sub-name">{{sub.name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
